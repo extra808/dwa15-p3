@@ -1,7 +1,7 @@
 ## P3: Developer's Best Friend
 
 ## Live URL
-<https://p3.dwa15.cognize.org>
+<http://p3.dwa15.cognize.org>
 
 ## Description
 A site to generate paragraphs of random text and random user account details for use in application development.
