@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Dwa15p3
+        psr4_prefix: Dwa15p3
+        src_path: app
