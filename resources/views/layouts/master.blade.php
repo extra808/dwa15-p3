@@ -2,9 +2,6 @@
 // set default character set
 ini_set('default_charset', 'UTF-8');
 
-$contentProse = "content-prose-1col";
-$contentPassphrase = "";
-
 // get last Modified date of this file
 $lastMod = date ("F d Y", getlastmod());
 ?>
@@ -39,12 +36,12 @@ $lastMod = date ("F d Y", getlastmod());
       <!-- Bootstrap two-columns, first column right -->
       <div class="row">
 
-		<div class="@yield('contentProse')">
+		<div class="content-prose-1col">
         <p>Site descriptions</p>
         @yield('content')
 		</div> <!-- /content-prose -->
 
-        <div class="text-center @yield('contentPassphrase')">
+        <div class="text-center">
 
         </div> <!-- /content-passphrase -->
       </div> <!-- /row -->
