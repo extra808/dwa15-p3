@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home')-> withSitetitle('Developer\'s Best Friend');
 });
 
 Route::get('p3-logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
