@@ -1,9 +1,6 @@
 <?php
 // set default character set
 ini_set('default_charset', 'UTF-8');
-
-// get last Modified date of this file
-$lastMod = date ("F d Y", getlastmod());
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +13,7 @@ $lastMod = date ("F d Y", getlastmod());
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{ $title or '' }} | {{ $sitetitle }}</title>
+    <title>{{ $title or '' }} {{ $sitetitle }}</title>
 
     <link href="css/app.css" rel="stylesheet">
 
@@ -37,7 +34,6 @@ $lastMod = date ("F d Y", getlastmod());
       <div class="row">
 
 		<div class="content-prose-1col">
-        <p>Site descriptions</p>
         @yield('content')
 		</div> <!-- /content-prose -->
 
@@ -46,7 +42,7 @@ $lastMod = date ("F d Y", getlastmod());
         </div> <!-- /content-passphrase -->
       </div> <!-- /row -->
 
-	<footer class="well well-sm text-right">&copy; Curtis Wilcox {{ $lastMod }}
+	<footer class="well well-sm text-right">&copy; Curtis Wilcox 2015
 	</footer>
     </div> <!-- /container -->
 
