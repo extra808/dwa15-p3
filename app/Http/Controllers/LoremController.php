@@ -16,6 +16,9 @@ class LoremController extends Controller
     */
     public function getLorem() {
         $faker = Faker::create();
-        return dd($faker->paragraphs(3) );
+        $siteTitle = 'Developer\'s Best Friend';
+        $title = 'Lorem';
+        $content = json_encode($faker->paragraphs(3) );
+        return view('lorem')-> withTitle($title)-> withContent($content)-> withSitetitle($siteTitle);
     }
 }
