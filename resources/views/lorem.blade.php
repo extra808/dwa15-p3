@@ -5,9 +5,19 @@
 @endsection
 
 @section('content')
-{!! Form::open(); !!}
+{!! Form::open() !!}
 {!! Form::label('qty', 'Quantity') !!}
 <input type="number" min="1" max="9" step="1" name="qty" id="qty" value="3" required>
+
+{!! Form::label('plain', 'Plain') !!}
+{!! Form::radio('format', 'plain', true) !!}
+
+{!! Form::label('html', 'HTML') !!}
+{!! Form::radio('format', 'html', false) !!}
+
+{!! Form::label('json', 'JSON') !!}
+{!! Form::radio('format', 'json', false) !!}
+
 {!! Form::submit('Submit') !!}
 {!! Form::close() !!}
 

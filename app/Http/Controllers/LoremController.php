@@ -24,7 +24,7 @@ class LoremController extends Controller
     */
     public function postLorem() {
         $qty = $_POST['qty'];
-        $format = '';
+        $format = $_POST['format'];
         $content = '';
         $faker = Faker::create();
         $paragraphs = $faker->paragraphs($qty);
