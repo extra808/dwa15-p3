@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('p3-logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 Route::get('/lorem', 'LoremController@getLorem');
+
+Route::post('/lorem', 'LoremController@postLorem');

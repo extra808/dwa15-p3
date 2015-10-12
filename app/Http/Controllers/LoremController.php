@@ -10,17 +10,24 @@ use Faker\Factory as Faker;
 
 class LoremController extends Controller
 {
+    private $title = 'Lorem';
+    private $siteTitle = ' | Developer\'s Best Friend';
 
     /**
     * Responds to requests to GET /lorem
     */
     public function getLorem() {
+        return view('lorem')-> withTitle($this->title)-> withSitetitle($this->siteTitle);
+    }
+    /**
+    * Responds to requests to POST /lorem
+    */
+    public function postLorem() {
+        $qty = $_POST['qty'];
         $format = '';
-        $faker = Faker::create();
-        $siteTitle = ' | Developer\'s Best Friend';
-        $title = 'Lorem';
         $content = '';
-        $paragraphs = $faker->paragraphs(3);
+        $faker = Faker::create();
+        $paragraphs = $faker->paragraphs($qty);
         switch ($format) {
             case 'html' :
                 foreach ($paragraphs as $paragraph) {
@@ -37,6 +44,6 @@ class LoremController extends Controller
  
         }
         
-        return view('lorem')-> withTitle($title)-> withContent($content)-> withSitetitle($siteTitle);
+        return view('lorem')-> withTitle($this->title)-> withContent($content)-> withSitetitle($this->siteTitle);
     }
 }
