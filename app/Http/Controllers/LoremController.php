@@ -29,6 +29,18 @@ class LoremController extends Controller
         $faker = Faker::create();
         $paragraphs = $faker->paragraphs($qty);
         switch ($format) {
+            // comma separated values wrapped in parens ()
+            case 'php' :
+                for($i = 0; $i < $qty; $i++) {
+                    if ($i == 0)
+                        $content .= '(  ';
+                    else
+                        $content .= ' , ';
+
+                    $content .= "'$paragraphs[$i]'\n";
+                }
+                $content .= ');';
+                break;
             case 'html' :
                 foreach ($paragraphs as $paragraph) {
                     $content .= "<p>$paragraph</p>\n";

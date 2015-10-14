@@ -12,6 +12,9 @@
 {!! Form::label('plain', 'Plain') !!}
 {!! Form::radio('format', 'plain', true) !!}
 
+{!! Form::label('php', 'PHP Array') !!}
+{!! Form::radio('format', 'php', false) !!}
+
 {!! Form::label('html', 'HTML') !!}
 {!! Form::radio('format', 'html', false) !!}
 
