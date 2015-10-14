@@ -15,7 +15,15 @@ Route::get('/', function () {
     return view('home')-> withSitetitle('Developer\'s Best Friend');
 });
 
-Route::get('p3-logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+// only use Laravel Log Viewer in a local environment
+if (App::environment() == 'local') {
+    Route::get('p3-logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+}
+else {
+    Route::get('/p3-logs', function () {
+        return view('home')-> withSitetitle('Developer\'s Best Friend');
+        });
+}
 
 Route::get('/lorem', 'LoremController@getLorem');
 
