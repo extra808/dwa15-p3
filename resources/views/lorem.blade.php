@@ -7,23 +7,23 @@
 @section('content')
 {!! Form::open() !!}
 {!! Form::label('qty', 'Quantity') !!}
-{!! Form::number('qty', '3', array('required'
+{!! Form::number('qty', old('qty', 3), array('required'
     , 'min'=>'1'
     , 'max'=>'99'
     , 'step'=>'1'
     )) !!}
 
 {!! Form::label('plain', 'Plain') !!}
-{!! Form::radio('format', 'plain', true) !!}
+{!! Form::radio('format', 'plain', old('format', 'true') ) !!}
 
 {!! Form::label('php', 'PHP Array') !!}
-{!! Form::radio('format', 'php', false) !!}
+{!! Form::radio('format', 'php', old('format', 'false') ) !!}
 
 {!! Form::label('html', 'HTML') !!}
-{!! Form::radio('format', 'html', false) !!}
+{!! Form::radio('format', 'html', old('format', 'false') ) !!}
 
 {!! Form::label('json', 'JSON') !!}
-{!! Form::radio('format', 'json', false) !!}
+{!! Form::radio('format', 'json', old('format', 'false') ) !!}
 
 {!! Form::submit('Submit') !!}
 {!! Form::close() !!}

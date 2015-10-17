@@ -22,9 +22,10 @@ class LoremController extends Controller
     /**
     * Responds to requests to POST /lorem
     */
-    public function postLorem() {
-        $qty = $_POST['qty'];
-        $format = $_POST['format'];
+    public function postLorem(Request $request) {
+        $request->flash();
+        $qty = $request->input('qty');
+        $format = $request->input('format');
         $content = '';
         $faker = Faker::create();
         $paragraphs = $faker->paragraphs($qty);
