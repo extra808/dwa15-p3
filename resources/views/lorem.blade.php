@@ -7,7 +7,11 @@
 @section('content')
 {!! Form::open() !!}
 {!! Form::label('qty', 'Quantity') !!}
-<input type="number" min="1" max="9" step="1" name="qty" id="qty" value="3" required>
+{!! Form::number('qty', '3', array('required'
+    , 'min'=>'1'
+    , 'max'=>'99'
+    , 'step'=>'1'
+    )) !!}
 
 {!! Form::label('plain', 'Plain') !!}
 {!! Form::radio('format', 'plain', true) !!}
