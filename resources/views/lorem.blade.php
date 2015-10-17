@@ -13,6 +13,17 @@
     , 'step'=>'1'
     )) !!}
 
+<div>
+{!! Form::label('badcow', 'Lorem Ipsum') !!}
+{!! Form::radio('generator', 'badcow', old('generator', true) ) !!}
+
+{!! Form::label('elvish', 'Elvish') !!}
+{!! Form::radio('generator', 'elvish', old('generator', false) ) !!}
+
+{!! Form::label('faker', 'Faker\'s Lorem Ipsum') !!}
+{!! Form::radio('generator', 'faker', old('generator', false) ) !!}
+</div>
+<div>
 {!! Form::label('plain', 'Plain') !!}
 {!! Form::radio('format', 'plain', old('format', true) ) !!}
 
@@ -24,7 +35,7 @@
 
 {!! Form::label('json', 'JSON') !!}
 {!! Form::radio('format', 'json', old('format', false) ) !!}
-
+</div>
 {!! Form::submit('Submit') !!}
 {!! Form::close() !!}
 

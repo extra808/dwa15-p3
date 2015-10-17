@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Dwa15p3\Http\Requests;
 use Dwa15p3\Http\Controllers\Controller;
 use Faker\Factory as Faker;
-
+use Badcow\LoremIpsum as Badcow;
 
 class LoremController extends Controller
 {
@@ -25,11 +25,26 @@ class LoremController extends Controller
     public function postLorem(Request $request) {
         $request->flash();
         $qty = $request->input('qty');
-        $format = $request->input('format');
+        $paragraphs = '';
         $content = '';
-        $faker = Faker::create();
-        $paragraphs = $faker->paragraphs($qty);
-        switch ($format) {
+        
+        // generator choice
+        switch ($request->input('generator')) {
+            case 'faker' :
+                $faker = Faker::create();
+                $paragraphs = $faker->paragraphs($qty);
+                break;
+            case 'elvish' :
+                $generator = new ElvishGenerator();
+                $paragraphs = $generator->getParagraphs($qty);
+                break;
+            default :
+                $generator = new Badcow\Generator();
+                $paragraphs = $generator->getParagraphs($qty);
+        }
+
+        // output choice
+        switch ($request->input('format')) {
             // comma separated values wrapped in parens ()
             case 'php' :
                 for($i = 0; $i < $qty; $i++) {
@@ -60,3 +75,4 @@ class LoremController extends Controller
         return view('lorem')-> withTitle($this->title)-> withContent($content)-> withSitetitle($this->siteTitle);
     }
 }
+
