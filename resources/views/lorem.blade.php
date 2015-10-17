@@ -14,16 +14,16 @@
     )) !!}
 
 {!! Form::label('plain', 'Plain') !!}
-{!! Form::radio('format', 'plain', old('format', 'true') ) !!}
+{!! Form::radio('format', 'plain', old('format', true) ) !!}
 
 {!! Form::label('php', 'PHP Array') !!}
-{!! Form::radio('format', 'php', old('format', 'false') ) !!}
+{!! Form::radio('format', 'php', old('format', false) ) !!}
 
 {!! Form::label('html', 'HTML') !!}
-{!! Form::radio('format', 'html', old('format', 'false') ) !!}
+{!! Form::radio('format', 'html', old('format', false) ) !!}
 
 {!! Form::label('json', 'JSON') !!}
-{!! Form::radio('format', 'json', old('format', 'false') ) !!}
+{!! Form::radio('format', 'json', old('format', false) ) !!}
 
 {!! Form::submit('Submit') !!}
 {!! Form::close() !!}
