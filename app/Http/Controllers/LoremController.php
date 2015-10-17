@@ -11,7 +11,6 @@ use Badcow\LoremIpsum as Badcow;
 class LoremController extends Controller
 {
     private $title = 'Lorem';
-    private $siteTitle = 'Developer\'s Best Friend';
 
     /**
     * Responds to requests to GET /lorem
