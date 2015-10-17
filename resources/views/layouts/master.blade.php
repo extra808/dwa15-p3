@@ -13,7 +13,12 @@ ini_set('default_charset', 'UTF-8');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{{ $title or '' }} {{ $sitetitle }}</title>
+    <title>
+        @if(isset($title) )
+        {{ $title }} | 
+        @endif
+        {{ $sitetitle }}
+    </title>
 
     <link href="css/app.css" rel="stylesheet">
 
@@ -28,6 +33,11 @@ ini_set('default_charset', 'UTF-8');
     <div class="container">
 
       <header class="page-header">
+        @if(isset($title) )
+        <div class="row">
+        <a href="/">{{$sitetitle }}</a>
+        </div>
+        @endif
         <h1>{{ $title or $sitetitle }}</h1>
       </header>
       <!-- Bootstrap two-columns, first column right -->
