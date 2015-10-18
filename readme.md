@@ -11,3 +11,5 @@ A site to generate paragraphs of random text and random user account details for
 ## Details for teaching team
 
 ## Outside code
+* [Badcow/lorem-ipsum](https://packagist.org/packages/badcow/lorem-ipsum)
+* [Elvish words](https://github.com/stevenmaguire/elvish-ipsum/blob/master/src/Provider.php)
