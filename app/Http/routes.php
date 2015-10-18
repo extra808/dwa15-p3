@@ -25,3 +25,5 @@ Route::get('/lorem', 'LoremController@getLorem');
 Route::post('/lorem', 'LoremController@postLorem');
 
 Route::get('/fakeusers', 'FakeUsersController@getFakeUsers');
+
+Route::post('/fakeusers', 'FakeUsersController@postFakeUsers');
