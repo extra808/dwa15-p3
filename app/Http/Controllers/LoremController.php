@@ -23,6 +23,8 @@ class LoremController extends Controller
 
         return view('lorem')-> withTitle($this->title)-> withSitetitle($this->siteTitle)-> withQty($this->qty);
     }
+
+
     /**
     * Responds to requests to POST /lorem
     */
@@ -30,6 +32,10 @@ class LoremController extends Controller
         $session = session()->all();
         if(isset($session['lorem_qty']) )
             $this->qty = $session['lorem_qty'];
+
+        // validate quantity
+        $this->validate($request, ['qty' => 'required|numeric|min:1|max:99'
+        ]);
 
         $request->flash();
         $qty = $request->input('qty');
