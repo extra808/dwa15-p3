@@ -26,7 +26,7 @@
 <fieldset>
 <legend>Include Title (Dr., Ms., Mr.)</legend>
 {!! Form::label('incTitle_some', 'Sometimes') !!}
-{!! Form::radio('incTitle', 'some', old('incTitle', true), array('id'=>'incSuffix_some') ) !!}
+{!! Form::radio('incTitle', 'some', old('incTitle', true), array('id'=>'incTitle_some') ) !!}
 {!! Form::label('incTitle_yes', 'Yes') !!}
 {!! Form::radio('incTitle', 'yes', old('incTitle', false), array('id'=>'incTitle_yes') ) !!}
 {!! Form::label('incTitle_no', 'No') !!}
