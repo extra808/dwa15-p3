@@ -11,19 +11,30 @@ use Badcow\LoremIpsum as Badcow;
 class LoremController extends Controller
 {
     private $title = 'Lorem';
+    private $qty = 3;
 
     /**
     * Responds to requests to GET /lorem
     */
     public function getLorem() {
-        return view('lorem')-> withTitle($this->title)-> withSitetitle($this->siteTitle);
+        $session = session()->all();
+        if(isset($session['lorem_qty']) )
+            $this->qty = $session['lorem_qty'];
+
+        return view('lorem')-> withTitle($this->title)-> withSitetitle($this->siteTitle)-> withQty($this->qty);
     }
     /**
     * Responds to requests to POST /lorem
     */
     public function postLorem(Request $request) {
+        $session = session()->all();
+        if(isset($session['lorem_qty']) )
+            $this->qty = $session['lorem_qty'];
+
         $request->flash();
         $qty = $request->input('qty');
+        // Store a piece of data in the session...
+        session(['lorem_qty' => $qty]);
         $paragraphs = '';
         $content = '';
         
@@ -71,7 +82,7 @@ class LoremController extends Controller
  
         }
         
-        return view('lorem')-> withTitle($this->title)-> withContent($content)-> withSitetitle($this->siteTitle);
+        return view('lorem')-> withTitle($this->title)-> withContent($content)-> withSitetitle($this->siteTitle)-> withQty($this->qty);
     }
 }
 

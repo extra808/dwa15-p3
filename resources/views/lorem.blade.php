@@ -7,7 +7,7 @@
 @section('content')
 {!! Form::open() !!}
 {!! Form::label('qty', 'Quantity') !!}
-{!! Form::number('qty', old('qty', 3), array('required'
+{!! Form::number('qty', old('qty', $qty ), array('required'
     , 'min'=>'1'
     , 'max'=>'99'
     , 'step'=>'1'
