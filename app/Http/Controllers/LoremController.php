@@ -13,6 +13,14 @@ class LoremController extends Controller
     private $title = 'Lorem';
     private $qty = 3;
 
+    private $lorem = array( 'qty' => array('default' => 3
+            , 'range' => array('min' => 1, 'max' => 99) )
+        , 'generator' => array('default' => 'badcow'
+            , 'in' => array('badcow','elvish','faker') )
+        , 'format' => array('default' => 'plain'
+            , 'in' => array('plain','php','html','json') )
+        );
+
     /**
     * Responds to requests to GET /lorem
     */
@@ -33,9 +41,7 @@ class LoremController extends Controller
         if(isset($session['lorem_qty']) )
             $this->qty = $session['lorem_qty'];
 
-        // validate quantity
-        $this->validate($request, ['qty' => 'required|numeric|min:1|max:99'
-        ]);
+        $this->validateLorem($request);
 
         $request->flash();
         $qty = $request->input('qty');
@@ -89,6 +95,24 @@ class LoremController extends Controller
         }
         
         return view('lorem')-> withTitle($this->title)-> withContent($content)-> withSitetitle($this->siteTitle)-> withQty($this->qty);
+    }
+
+    /**
+    * Validate input
+    */
+    private function validateLorem($req) {
+        $this->validate($req, [
+          'qty'       => 'required|integer|'. $this->implodeKeyValue($this->lorem['qty']['range'])
+        , 'generator' => 'required|in:'. implode(',', $this->lorem['generator']['in'])
+        , 'format'    => 'required|in:'. implode(',', $this->lorem['format']['in'])
+        ]);
+    }
+
+    /**
+    * Implode both key and value
+    */
+    private function implodeKeyValue($input) {
+        return implode('|', array_map(function ($v, $k) { return $k . ':' . $v; }, $input, array_keys($input)));
     }
 }
 
