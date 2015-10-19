@@ -44,7 +44,7 @@ class LoremController extends Controller
         $this->validateLorem($request);
 
         $request->flash();
-        $qty = $request->input('qty');
+        $qty = $request->input('Quantity');
         // Store a piece of data in the session...
         session(['lorem_qty' => $qty]);
         $paragraphs = '';
@@ -102,8 +102,8 @@ class LoremController extends Controller
     */
     private function validateLorem($req) {
         $this->validate($req, [
-          'qty'       => 'required|integer|'. $this->implodeKeyValue($this->lorem['qty']['range'])
-        , 'generator' => 'required|in:'. implode(',', $this->lorem['generator']['in'])
+          'quantity'       => 'required|integer|'. $this->implodeKeyValue($this->lorem['qty']['range'])
+        , 'text&nbsp;generator' => 'required|in:'. implode(',', $this->lorem['generator']['in'])
         , 'format'    => 'required|in:'. implode(',', $this->lorem['format']['in'])
         ]);
     }

@@ -14,8 +14,8 @@
 @endif
 
 {!! Form::open() !!}
-{!! Form::label('qty', 'Quantity') !!}
-{!! Form::number('qty', old('qty', $qty ), array('required'
+{!! Form::label('quantity', 'Quantity') !!}
+{!! Form::number('quantity', old('quantity', $qty ), array('required'
     , 'min'=>'1'
     , 'max'=>'99'
     , 'step'=>'1'
@@ -23,13 +23,13 @@
 
 <div>
 {!! Form::label('badcow', 'Lorem Ipsum') !!}
-{!! Form::radio('generator', 'badcow', old('generator', true), array('id'=>'badcow') ) !!}
+{!! Form::radio('text&nbsp;generator', 'badcow', old('text&nbsp;generator', true), array('id'=>'badcow') ) !!}
 
 {!! Form::label('elvish', 'Elvish') !!}
-{!! Form::radio('generator', 'elvish', old('generator', false), array('id'=>'elvish') ) !!}
+{!! Form::radio('text&nbsp;generator', 'elvish', old('text&nbsp;generator', false), array('id'=>'elvish') ) !!}
 
 {!! Form::label('faker', 'Faker\'s Lorem Ipsum') !!}
-{!! Form::radio('generator', 'faker', old('generator', false), array('id'=>'faker') ) !!}
+{!! Form::radio('text&nbsp;generator', 'faker', old('text&nbsp;generator', false), array('id'=>'faker') ) !!}
 </div>
 <div>
 {!! Form::label('plain', 'Plain') !!}
