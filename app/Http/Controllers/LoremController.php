@@ -44,7 +44,7 @@ class LoremController extends Controller
         $this->validateLorem($request);
 
         $request->flash();
-        $qty = $request->input('Quantity');
+        $qty = $request->input('quantity');
         // Store a piece of data in the session...
         session(['lorem_qty' => $qty]);
         $paragraphs = '';
