@@ -103,7 +103,7 @@ class LoremController extends Controller
     private function validateLorem($req) {
         $this->validate($req, [
           'quantity'       => 'required|integer|'. $this->implodeKeyValue($this->lorem['qty']['range'])
-        , 'text&nbsp;generator' => 'required|in:'. implode(',', $this->lorem['generator']['in'])
+        , 'generator' => 'required|in:'. implode(',', $this->lorem['generator']['in'])
         , 'format'    => 'required|in:'. implode(',', $this->lorem['format']['in'])
         ]);
     }

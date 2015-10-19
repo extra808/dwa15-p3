@@ -23,13 +23,13 @@
 
 <div>
 {!! Form::label('badcow', 'Lorem Ipsum') !!}
-{!! Form::radio('text&nbsp;generator', 'badcow', old('text&nbsp;generator', true), array('id'=>'badcow') ) !!}
+{!! Form::radio('generator', 'badcow', old('generator', true), array('id'=>'badcow') ) !!}
 
 {!! Form::label('elvish', 'Elvish') !!}
-{!! Form::radio('text&nbsp;generator', 'elvish', old('text&nbsp;generator', false), array('id'=>'elvish') ) !!}
+{!! Form::radio('generator', 'elvish', old('generator', false), array('id'=>'elvish') ) !!}
 
 {!! Form::label('faker', 'Faker\'s Lorem Ipsum') !!}
-{!! Form::radio('text&nbsp;generator', 'faker', old('text&nbsp;generator', false), array('id'=>'faker') ) !!}
+{!! Form::radio('generator', 'faker', old('generator', false), array('id'=>'faker') ) !!}
 </div>
 <div>
 {!! Form::label('plain', 'Plain') !!}
