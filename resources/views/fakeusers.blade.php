@@ -14,7 +14,7 @@
 @endif
 
 {!! Form::open() !!}
-{!! Form::label('qty', 'Quantity') !!}
+{!! Form::label('quantity', 'Quantity') !!}
 {!! Form::number('quantity', old('quantity', session('fakeuser.qty.default') ), array('required'
     , 'min'=> session('fakeuser.qty.range.min')
     , 'max'=> session('fakeuser.qty.range.max')
