@@ -15,9 +15,9 @@
 
 {!! Form::open() !!}
 {!! Form::label('quantity', 'Quantity') !!}
-{!! Form::number('quantity', old('quantity', $qty ), array('required'
-    , 'min'=>'1'
-    , 'max'=>'99'
+{!! Form::number('quantity', old('quantity', session('lorem.qty.default') ), array('required'
+    , 'min'=> session('lorem.qty.min')
+    , 'max'=> session('lorem.qty.max')
     , 'step'=>'1'
     )) !!}
 
