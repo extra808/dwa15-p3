@@ -24,10 +24,6 @@ class LoremController extends Controller
     * Responds to requests to GET /lorem
     */
     public function getLorem() {
-        $session = session()->all();
-        if(isset($session['lorem_qty']) )
-            $this->qty = $session['lorem_qty'];
-
         session()->put('lorem', $this->lorem);
         return view('lorem')-> withTitle($this->title)-> withSitetitle($this->siteTitle);
     }
@@ -37,15 +33,9 @@ class LoremController extends Controller
     * Responds to requests to POST /lorem
     */
     public function postLorem(Request $request) {
-        $session = session()->all();
-        if(isset($session['lorem_qty']) )
-            $this->qty = $session['lorem_qty'];
-
         $this->validateLorem($request);
 
         $qty = $request->input('quantity');
-        // Store a piece of data in the session...
-        session(['lorem_qty' => $qty]);
         $paragraphs = '';
         $content = '';
         
