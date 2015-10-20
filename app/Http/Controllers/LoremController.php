@@ -24,6 +24,7 @@ class LoremController extends Controller
     * Responds to requests to GET /lorem
     */
     public function getLorem() {
+        // store attributes in session
         session()->put('lorem', $this->lorem);
         return view('lorem')-> withTitle($this->title)-> withSitetitle($this->siteTitle);
     }
@@ -83,6 +84,7 @@ class LoremController extends Controller
  
         }
         
+        // store input in session
         $request->flash();
 
         return view('lorem')-> withTitle($this->title)-> withContent($content)-> withSitetitle($this->siteTitle);
@@ -90,6 +92,8 @@ class LoremController extends Controller
 
     /**
     * Validate input
+    *
+    * @param Request $req
     */
     private function validateLorem($req) {
         $this->validate($req, [
@@ -101,6 +105,10 @@ class LoremController extends Controller
 
     /**
     * Implode both key and value
+    *
+    * @param Array $input
+    *
+    * @return String
     */
     private function implodeKeyValue($input) {
         return implode('|', array_map(function ($v, $k) { return $k . ':' . $v; }, $input, array_keys($input)));
