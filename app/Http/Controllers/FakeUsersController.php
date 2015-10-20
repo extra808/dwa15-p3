@@ -11,10 +11,22 @@ class FakeUsersController extends Controller
 {
     private $title = 'Fake Users';
 
+    private $fakeuser = array( 'qty' => array('default' => 6
+            , 'range' => array('min' => 1, 'max' => 99) )
+        , 'incName' => array('default' => 'full'
+            , 'in' => array('full', 'component', 'both') )
+        , 'incTitle' => array('default' => 'some'
+            , 'in' => array('some', 'yes', 'no') )
+        , 'incSuffix' => array('default' => 'some'
+            , 'in' => array('some', 'yes', 'no') )
+        );
+
     /**
     * Responds to requests to GET /fakeusers
     */
     public function getFakeUsers() {
+        // store attributes in session
+        session()->put('fakeuser', $this->fakeuser);
         return view('fakeusers')-> withTitle($this->title)-> withFusers(array() )-> withSitetitle($this->siteTitle);
     }
 

@@ -5,11 +5,19 @@
 @endsection
 
 @section('content')
+@if(count($errors) > 0)
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+@endif
+
 {!! Form::open() !!}
 {!! Form::label('qty', 'Quantity') !!}
-{!! Form::number('quantity', old('quantity', 6), array('required'
-    , 'min'=>'1'
-    , 'max'=>'99'
+{!! Form::number('quantity', old('quantity', session('fakeuser.qty.default') ), array('required'
+    , 'min'=> session('fakeuser.qty.range.min')
+    , 'max'=> session('fakeuser.qty.range.max')
     , 'step'=>'1'
     )) !!}
 
