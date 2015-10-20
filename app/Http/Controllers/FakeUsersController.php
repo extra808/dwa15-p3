@@ -34,6 +34,7 @@ class FakeUsersController extends Controller
     * Responds to requests to POST /lorem
     */
     public function postFakeUsers(Request $request) {
+        $this->validateFakeUsers($request);
         // store input in session
         $request->flash();
         $qty = $request->input('quantity');
@@ -130,5 +131,30 @@ class FakeUsersController extends Controller
                     return null;
                 }
         }
+    }
+
+    /**
+    * Validate input
+    *
+    * @param Request $req
+    */
+    private function validateFakeUsers($req) {
+        $this->validate($req, [
+          'quantity'  => 'required|integer|'. $this->implodeKeyValue($this->fakeuser['qty']['range'])
+        , 'includeName'   => 'required|in:'. implode(',', $this->fakeuser['incName']['in'])
+        , 'includeTitle'  => 'required|in:'. implode(',', $this->fakeuser['incTitle']['in'])
+        , 'includeSuffix' => 'required|in:'. implode(',', $this->fakeuser['incSuffix']['in'])
+        ]);
+    }
+
+    /**
+    * Implode both key and value
+    *
+    * @param Array $input
+    *
+    * @return String
+    */
+    private function implodeKeyValue($input) {
+        return implode('|', array_map(function ($v, $k) { return $k . ':' . $v; }, $input, array_keys($input)));
     }
 }
