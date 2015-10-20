@@ -11,7 +11,6 @@ use Badcow\LoremIpsum as Badcow;
 class LoremController extends Controller
 {
     private $title = 'Lorem';
-    private $qty = 3;
 
     private $lorem = array( 'qty' => array('default' => 3
             , 'range' => array('min' => 1, 'max' => 99) )
@@ -29,7 +28,8 @@ class LoremController extends Controller
         if(isset($session['lorem_qty']) )
             $this->qty = $session['lorem_qty'];
 
-        return view('lorem')-> withTitle($this->title)-> withSitetitle($this->siteTitle)-> withQty($this->qty);
+        session()->put('lorem', $this->lorem);
+        return view('lorem')-> withTitle($this->title)-> withSitetitle($this->siteTitle);
     }
 
 
@@ -43,7 +43,6 @@ class LoremController extends Controller
 
         $this->validateLorem($request);
 
-        $request->flash();
         $qty = $request->input('quantity');
         // Store a piece of data in the session...
         session(['lorem_qty' => $qty]);
@@ -94,7 +93,9 @@ class LoremController extends Controller
  
         }
         
-        return view('lorem')-> withTitle($this->title)-> withContent($content)-> withSitetitle($this->siteTitle)-> withQty($this->qty);
+        $request->flash();
+
+        return view('lorem')-> withTitle($this->title)-> withContent($content)-> withSitetitle($this->siteTitle);
     }
 
     /**
