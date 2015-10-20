@@ -24,13 +24,13 @@ class FakeUsersController extends Controller
     public function postFakeUsers(Request $request) {
         // store input in session
         $request->flash();
-        $qty = $request->input('qty');
+        $qty = $request->input('quantity');
         $fusers = array();
 
         for($i=0; $i < $qty; $i++) {
             $name = array();
             // include title, or not
-            $incTitle = $this->includeTitle($request->input('incTitle') );
+            $incTitle = $this->includeTitle($request->input('includeTitle') );
             if ($incTitle)
                 array_push($name, $incTitle);
 
@@ -39,11 +39,11 @@ class FakeUsersController extends Controller
             array_push($name, $faker->lastName);
 
             // include suffix, or not
-            $incSuffix = $this->includeSuffix($request->input('incSuffix') );
+            $incSuffix = $this->includeSuffix($request->input('includeSuffix') );
             if ($incSuffix)
                 array_push($name, $incSuffix);
 
-            array_push($fusers,  $this->includeName($request->input('incName'), $name) );
+            array_push($fusers,  $this->includeName($request->input('includeName'), $name) );
         }
 
         return view('fakeusers')-> withTitle($this->title)-> withFusers($fusers)-> withSitetitle($this->siteTitle);
