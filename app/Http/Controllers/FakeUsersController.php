@@ -22,6 +22,7 @@ class FakeUsersController extends Controller
     * Responds to requests to POST /lorem
     */
     public function postFakeUsers(Request $request) {
+        // store input in session
         $request->flash();
         $qty = $request->input('qty');
         $fusers = array();
@@ -50,6 +51,11 @@ class FakeUsersController extends Controller
 
     /**
     * Return full name, name in components, or both
+    *
+    * @param String $incName
+    * @param Array $name
+    *
+    * @return String
     */
     private function includeName($incName, $name) {
         $arrName = array();
@@ -70,6 +76,10 @@ class FakeUsersController extends Controller
 
     /**
     * Return title for name, or not
+    *
+    * @param String $incTitle
+    *
+    * @return String
     */
     private function includeTitle($incTitle) {
         switch ($incTitle) {
@@ -89,6 +99,10 @@ class FakeUsersController extends Controller
 
     /**
     * Return suffix for name, or not
+    *
+    * @param String $incSuffix
+    *
+    * @return String
     */
     private function includeSuffix($incSuffix) {
         switch ($incSuffix) {
