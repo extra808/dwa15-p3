@@ -13,6 +13,8 @@ class FakeUsersController extends Controller
 
     private $fakeuser = array( 'qty' => array('default' => 6
             , 'range' => array('min' => 1, 'max' => 99) )
+        , 'format' => array('default' => 'plain'
+            , 'in' => array('plain','csv','json') )
         , 'incName' => array('default' => 'full'
             , 'in' => array('full', 'component', 'both') )
         , 'incTitle' => array('default' => 'some'
@@ -39,6 +41,7 @@ class FakeUsersController extends Controller
         $request->flash();
         $qty = $request->input('quantity');
         $fusers = array();
+        $content = '';
 
         for($i=0; $i < $qty; $i++) {
             $name = array();
@@ -59,7 +62,30 @@ class FakeUsersController extends Controller
             array_push($fusers,  $this->includeName($request->input('includeName'), $name) );
         }
 
-        return view('fakeusers')-> withTitle($this->title)-> withFusers($fusers)-> withSitetitle($this->siteTitle);
+        // output choice
+        switch ($request->input('format')) {
+            // comma separated values wrapped in parens ()
+            case 'csv' :
+                foreach ($fusers as $fuser) {
+                    for($i=0; $i < count($fuser); $i++) {
+                        $content .= '"'. $fuser[$i] .'"';
+                        if($i < count($fuser)-1 ) {
+                            $content .= ',';
+                        }
+                    }
+                    $content .= "\n";
+                }
+                break;
+            case 'json' :
+                $content = json_encode($fusers);
+                break;
+            default :
+                foreach ($fusers as $fuser) {
+                    $content .= implode(' ', $fuser) ."\n";
+                }
+        }
+
+        return view('fakeusers')-> withTitle($this->title)-> withContent($content)-> withSitetitle($this->siteTitle);
     }
 
     /**
@@ -68,7 +94,7 @@ class FakeUsersController extends Controller
     * @param String $incName
     * @param Array $name
     *
-    * @return String
+    * @return Array
     */
     private function includeName($incName, $name) {
         $arrName = array();
@@ -84,7 +110,7 @@ class FakeUsersController extends Controller
                 $arrName = $name;
         }
 
-        return implode(', ', $arrName);
+        return $arrName;
     }
 
     /**
@@ -141,6 +167,7 @@ class FakeUsersController extends Controller
     private function validateFakeUsers($req) {
         $this->validate($req, [
           'quantity'  => 'required|integer|'. $this->implodeKeyValue($this->fakeuser['qty']['range'])
+        , 'format'   => 'required|in:'. implode(',', $this->fakeuser['format']['in'])
         , 'includeName'   => 'required|in:'. implode(',', $this->fakeuser['incName']['in'])
         , 'includeTitle'  => 'required|in:'. implode(',', $this->fakeuser['incTitle']['in'])
         , 'includeSuffix' => 'required|in:'. implode(',', $this->fakeuser['incSuffix']['in'])

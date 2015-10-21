@@ -22,6 +22,18 @@
     )) !!}
 
 <fieldset>
+<legend>Format</legend>
+{!! Form::label('plain', 'Plain') !!}
+{!! Form::radio('format', 'plain', old('format', true), array('id'=>'plain') ) !!}
+
+{!! Form::label('csv', 'CSV') !!}
+{!! Form::radio('format', 'csv', old('format', false), array('id'=>'csv') ) !!}
+
+{!! Form::label('json', 'JSON') !!}
+{!! Form::radio('format', 'json', old('format', false), array('id'=>'json') ) !!}
+</fieldset>
+
+<fieldset>
 <legend>Generate Names as</legend>
 {!! Form::label('incName_full', 'Full Name') !!}
 {!! Form::radio('includeName', 'full', old('includeName', true), array('id'=>'incName_full') ) !!}
@@ -54,10 +66,6 @@
 {!! Form::close() !!}
 
 <pre id="output" contenteditable="true" tabindex="0">
-@forelse ($fusers as $fuser)
-    {{ $fuser }}
-@empty
-    No users
-@endforelse
+{{ $content or '' }}
 </pre>
 @endsection
