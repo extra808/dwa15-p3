@@ -46,8 +46,11 @@
 {!! Form::label('json', 'JSON') !!}
 {!! Form::radio('format', 'json', old('format', false), array('id'=>'json') ) !!}
 </fieldset>
-{!! Form::submit('Submit') !!}
-<a href="{!! Request::url() !!}">Reset</a>
+
+<div class="btn-group" role="group">
+{!! Form::submit('Submit', array('class'=>'btn btn-default')) !!}
+<a href="{!! Request::url() !!}" class="btn btn-default">Reset</a>
+</div>
 {!! Form::close() !!}
 
 <pre id="output" contenteditable="true" tabindex="0">

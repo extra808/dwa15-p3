@@ -65,8 +65,11 @@
 {!! Form::label('incSuffix_no', 'No') !!}
 {!! Form::radio('includeSuffix', 'no', old('includeSuffix', false), array('id'=>'incSuffix_no') ) !!}
 </fieldset>
-{!! Form::submit('Submit') !!}
-<a href="{!! Request::url() !!}">Reset</a>
+
+<div class="btn-group" role="group">
+{!! Form::submit('Submit', array('class'=>'btn btn-default')) !!}
+<a href="{!! Request::url() !!}" class="btn btn-default">Reset</a>
+</div>
 {!! Form::close() !!}
 
 <pre id="output" contenteditable="true" tabindex="0">
