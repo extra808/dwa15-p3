@@ -21,7 +21,8 @@
     , 'step'=>'1'
     )) !!}
 
-<div>
+<fieldset>
+<legend>Generator</legend>
 {!! Form::label('badcow', 'Lorem Ipsum') !!}
 {!! Form::radio('generator', 'badcow', old('generator', true), array('id'=>'badcow') ) !!}
 
@@ -30,8 +31,9 @@
 
 {!! Form::label('faker', 'Faker\'s Lorem Ipsum') !!}
 {!! Form::radio('generator', 'faker', old('generator', false), array('id'=>'faker') ) !!}
-</div>
-<div>
+</fieldset>
+<fieldset>
+<legend>Format</legend>
 {!! Form::label('plain', 'Plain') !!}
 {!! Form::radio('format', 'plain', old('format', true), array('id'=>'plain') ) !!}
 
@@ -43,7 +45,7 @@
 
 {!! Form::label('json', 'JSON') !!}
 {!! Form::radio('format', 'json', old('format', false), array('id'=>'json') ) !!}
-</div>
+</fieldset>
 {!! Form::submit('Submit') !!}
 {!! Form::close() !!}
 
