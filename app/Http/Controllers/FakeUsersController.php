@@ -14,7 +14,7 @@ class FakeUsersController extends Controller
     private $fakeuser = array( 'qty' => array('default' => 6
             , 'range' => array('min' => 1, 'max' => 99) )
         , 'format' => array('default' => 'plain'
-            , 'in' => array('plain','csv','json') )
+            , 'in' => array('plain','csv','tab','json') )
         , 'incName' => array('default' => 'full'
             , 'in' => array('full', 'component', 'both') )
         , 'incTitle' => array('default' => 'some'
@@ -74,6 +74,11 @@ class FakeUsersController extends Controller
                         }
                     }
                     $content .= "\n";
+                }
+                break;
+             case 'tab' :
+                foreach ($fusers as $fuser) {
+                    $content .= implode("\t", $fuser) ."\n";
                 }
                 break;
             case 'json' :

@@ -29,6 +29,9 @@
 {!! Form::label('csv', 'CSV') !!}
 {!! Form::radio('format', 'csv', old('format', false), array('id'=>'csv') ) !!}
 
+{!! Form::label('tab', 'Tab-delimited') !!}
+{!! Form::radio('format', 'tab', old('format', false), array('id'=>'tab') ) !!}
+
 {!! Form::label('json', 'JSON') !!}
 {!! Form::radio('format', 'json', old('format', false), array('id'=>'json') ) !!}
 </fieldset>
