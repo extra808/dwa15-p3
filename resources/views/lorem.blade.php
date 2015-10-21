@@ -47,6 +47,7 @@
 {!! Form::radio('format', 'json', old('format', false), array('id'=>'json') ) !!}
 </fieldset>
 {!! Form::submit('Submit') !!}
+<a href="{!! Request::url() !!}">Reset</a>
 {!! Form::close() !!}
 
 <pre id="output" contenteditable="true" tabindex="0">

@@ -66,6 +66,7 @@
 {!! Form::radio('includeSuffix', 'no', old('includeSuffix', false), array('id'=>'incSuffix_no') ) !!}
 </fieldset>
 {!! Form::submit('Submit') !!}
+<a href="{!! Request::url() !!}">Reset</a>
 {!! Form::close() !!}
 
 <pre id="output" contenteditable="true" tabindex="0">
