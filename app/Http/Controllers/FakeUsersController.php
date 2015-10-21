@@ -67,13 +67,7 @@ class FakeUsersController extends Controller
             // comma separated values wrapped in parens ()
             case 'csv' :
                 foreach ($fusers as $fuser) {
-                    for($i=0; $i < count($fuser); $i++) {
-                        $content .= '"'. $fuser[$i] .'"';
-                        if($i < count($fuser)-1 ) {
-                            $content .= ',';
-                        }
-                    }
-                    $content .= "\n";
+                    $content .= '"'. implode('", "', $fuser) .'"'."\n";
                 }
                 break;
              case 'tab' :
