@@ -42,6 +42,7 @@ class FakeUsersController extends Controller
         // delete input values if reset button clicked
         if($request->has('reset') ) {
             $request->replace(array() );
+            return view('fakeusers')-> withTitle($this->title)-> withSitetitle($this->siteTitle);
         }
 
         $qty = $request->input('quantity');
