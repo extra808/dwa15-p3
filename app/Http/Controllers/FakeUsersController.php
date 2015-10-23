@@ -38,10 +38,15 @@ class FakeUsersController extends Controller
     */
     public function postFakeUsers(Request $request) {
         $this->validateFakeUsers($request);
+
+        // delete input values if reset button clicked
+        if($request->has('reset') ) {
+            $request->replace(array() );
+        }
+
         $qty = $request->input('quantity');
         $fusers = array();
         $content = '';
-
         for($i=0; $i < $qty; $i++) {
             $name = array();
             // include title, or not
