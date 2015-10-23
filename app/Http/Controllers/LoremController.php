@@ -36,6 +36,12 @@ class LoremController extends Controller
     public function postLorem(Request $request) {
         $this->validateLorem($request);
 
+        // delete input values if reset button clicked
+        if($request->has('reset') ) {
+            $request->flush();
+            return view('lorem')-> withTitle($this->title)-> withSitetitle($this->siteTitle);
+        }
+
         $qty = $request->input('quantity');
         $paragraphs = '';
         $content = '';

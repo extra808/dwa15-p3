@@ -56,7 +56,7 @@
 
 <div class="btn-group" role="group">
 {!! Form::submit('Submit', array('class'=>'btn btn-default')) !!}
-<a href="{!! Request::url() !!}" class="btn btn-default">Reset</a>
+{!! Form::submit('Reset', array('name'=>'reset', 'class'=>'btn btn-default')) !!}
 </div>
 {!! Form::close() !!}
 
