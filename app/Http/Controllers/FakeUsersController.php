@@ -13,8 +13,8 @@ class FakeUsersController extends Controller
 
     private $fakeuser = array( 'qty' => array('default' => 6
             , 'range' => array('min' => 1, 'max' => 99) )
-        , 'format' => array('default' => 'plain'
-            , 'in' => array('plain','csv','tab','json') )
+        , 'format' => array('default' => 'json'
+            , 'in' => array('json','csv','tab','plain') )
         , 'incName' => array('default' => 'full'
             , 'in' => array('full', 'component', 'both') )
         , 'incTitle' => array('default' => 'some'
@@ -83,13 +83,13 @@ class FakeUsersController extends Controller
                     $content .= $this->userToTab($fuser, true);
                 }
                 break;
-            case 'json' :
-                $content = json_encode($fusers);
-                break;
-            default :
+            case 'plain' :
                 foreach ($fusers as $fuser) {
                     $content .= $this->userToPlain($fuser, true);
                 }
+                break;
+            default :
+                $content = json_encode($fusers);
         }
 
         // if ALL is checked, check all the other boxes

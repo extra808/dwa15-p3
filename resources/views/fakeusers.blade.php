@@ -23,8 +23,8 @@
 
 <fieldset>
 <legend>Format</legend>
-{!! Form::label('plain', 'Plain') !!}
-{!! Form::radio('format', 'plain', old('format', true), array('id'=>'plain') ) !!}
+{!! Form::label('json', 'JSON') !!}
+{!! Form::radio('format', 'json', old('format', true), array('id'=>'json') ) !!}
 
 {!! Form::label('csv', 'CSV') !!}
 {!! Form::radio('format', 'csv', old('format', false), array('id'=>'csv') ) !!}
@@ -32,8 +32,8 @@
 {!! Form::label('tab', 'Tab-delimited') !!}
 {!! Form::radio('format', 'tab', old('format', false), array('id'=>'tab') ) !!}
 
-{!! Form::label('json', 'JSON') !!}
-{!! Form::radio('format', 'json', old('format', false), array('id'=>'json') ) !!}
+{!! Form::label('plain', 'Plain') !!}
+{!! Form::radio('format', 'plain', old('format', false), array('id'=>'plain') ) !!}
 </fieldset>
 
 <fieldset>
