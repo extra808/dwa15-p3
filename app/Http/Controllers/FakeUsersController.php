@@ -83,12 +83,12 @@ class FakeUsersController extends Controller
                 break;
             default :
                 foreach ($fusers as $fuser) {
-                    $content .= implode(' ', $fuser) ."\n";
+                    $content .= $this->userToPlain($fuser, true);
                 }
         }
 
         // if ALL is checked, check all the other boxes
-        if(in_array('all', $request->input('includeOptions') ) ) {
+        if($request->has('includeOptions') && in_array('all', $request->input('includeOptions') ) ) {
             $inputs = $request->all();
             $inputs['includeOptions'] = $this->fakeuser['incOptions'];
             $request->replace($inputs);
@@ -318,6 +318,36 @@ class FakeUsersController extends Controller
         }
         else {
             return implode("\t", $row) ."\n";
+        }
+    }
+
+
+    /**
+    * Convert a user array to space-delimited string
+    *
+    * @param Array   $data
+    * @param Boolean $outermost
+    *
+    * @return String
+    */
+    private function userToPlain($data, $outermost) {
+        $row = array();
+        foreach($data as $key => $value) {
+            if(is_array($value) ) {
+                // recursively call function
+                array_push($row, $this->userToPlain($value, false) );
+            }
+            else {
+                // add string to array
+                array_push($row, $value);
+            }
+        }
+        // array inside array
+        if (!$outermost) {
+            return implode(" ", $row);
+        }
+        else {
+            return implode(" ", $row) ."\n";
         }
     }
 
