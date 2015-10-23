@@ -21,6 +21,7 @@ class FakeUsersController extends Controller
             , 'in' => array('some', 'yes', 'no') )
         , 'incSuffix' => array('default' => 'some'
             , 'in' => array('some', 'yes', 'no') )
+        , 'incOptions' => (array('address', 'phoneNumber', 'dob', 'email', 'userName', 'url', 'creditCard', 'uuid', 'bio') )
         );
 
     /**
@@ -59,7 +60,10 @@ class FakeUsersController extends Controller
             if ($incSuffix)
                 array_push($name, $incSuffix);
 
-            array_push($fusers,  $this->includeName($request->input('includeName'), $name) );
+            array_push($fusers
+            ,  $this->includeName($request->input('includeName'), $name)
+            ,  $this->includeOptions($faker, $this->fakeuser['incOptions'])
+            );
         }
 
         // output choice
@@ -158,6 +162,63 @@ class FakeUsersController extends Controller
         }
     }
 
+
+    /**
+    * Return suffix for name, or not
+    *
+    * @param Object $faker
+    * @param Array  $name
+    * @param Array  $incOptions
+    *
+    * @return Array
+    */
+    private function includeOptions($faker, $incOptions) {
+        $details = array();
+
+        foreach($incOptions as $option) {
+            switch ($option) {
+                case 'address' : 
+                    $addr = array('streetAddress' => $faker->streetAddress);
+                    $addr['secondaryAddress'] = $faker->optional()->secondaryAddress;
+                    $addr['city'] = $faker->city;
+                    $addr['stateAbbr'] = $faker->stateAbbr;
+                    $addr['postcode'] = $faker->postcode;
+                    $addr['country'] = $faker->optional()->country;
+
+                    $details['address'] = $addr;
+                    break;
+                case 'phoneNumber' : 
+                    $details['phoneNumber'] = $faker->phoneNumber;
+                    break;
+                case 'dob' : 
+                    $details['dob'] = $faker->date('m/d/Y', '-18 years');
+                    break;
+                case 'safeEmail' : 
+                    $details['email'] = $faker->safeEmail;
+                    break;
+                case 'userName' : 
+                    $details['userName'] = $faker->userName;
+                    break;
+                case 'url' : 
+                    $details['url'] = $faker->url;
+                    break;
+                case 'creditCard' : 
+                    $details['creditCard'] = array('cc' => $faker->creditCardDetails);
+                    break;
+                case 'uuid' : 
+                    $details['uuid'] = $faker->uuid;
+                    break;
+                case 'bio' :
+                    $details['bio'] = $faker->realText('200');
+                    break;
+                default :
+            }
+        }
+        
+        return $details;
+    }
+
+
     /**
     * Validate input
     *
@@ -172,6 +233,7 @@ class FakeUsersController extends Controller
         , 'includeSuffix' => 'required|in:'. implode(',', $this->fakeuser['incSuffix']['in'])
         ]);
     }
+
 
     /**
     * Implode both key and value
