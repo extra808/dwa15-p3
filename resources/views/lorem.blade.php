@@ -23,28 +23,35 @@
 
 <fieldset>
 <legend>Generator</legend>
-{!! Form::label('badcow', 'Lorem Ipsum') !!}
+<div class="btn-group" role="group" data-toggle="buttons">
+<label class="btn btn-default <?php if( (null !== session('_old_input.generator') ) && session('_old_input.generator') == 'badcow') { echo 'active'; } ?>">Lorem Ipsum
 {!! Form::radio('generator', 'badcow', old('generator', true), array('id'=>'badcow') ) !!}
-
-{!! Form::label('elvish', 'Elvish') !!}
+</label>
+<label class="btn btn-default <?php if( (null !== session('_old_input.generator') ) && session('_old_input.generator') == 'elvish') { echo 'active'; } ?>">Elvish
 {!! Form::radio('generator', 'elvish', old('generator', false), array('id'=>'elvish') ) !!}
-
-{!! Form::label('faker', 'Faker\'s Lorem Ipsum') !!}
+</label>
+<label class="btn btn-default <?php if( (null !== session('_old_input.generator') ) && session('_old_input.generator') == 'faker') { echo 'active'; } ?>">Faker&#039;s Lorem Ipsum
 {!! Form::radio('generator', 'faker', old('generator', false), array('id'=>'faker') ) !!}
+</label>
+</div>
 </fieldset>
+
 <fieldset>
 <legend>Format</legend>
-{!! Form::label('plain', 'Plain') !!}
-{!! Form::radio('format', 'plain', old('format', true), array('id'=>'plain') ) !!}
-
-{!! Form::label('php', 'PHP Array') !!}
+<div class="btn-group" role="group" data-toggle="buttons">
+<label class="btn btn-default <?php if( (null !== session('_old_input.format') ) && session('_old_input.format') == 'plain') { echo 'active'; } ?>">Plain
+{!! Form::radio('format', 'plain', old('format', false), array('id'=>'plain') ) !!}
+</label>
+<label class="btn btn-default <?php if( (null !== session('_old_input.format') ) && session('_old_input.format') == 'php') { echo 'active'; } ?>">PHP Array
 {!! Form::radio('format', 'php', old('format', false), array('id'=>'php') ) !!}
-
-{!! Form::label('html', 'HTML') !!}
+</label>
+<label class="btn btn-default <?php if( (null !== session('_old_input.format') ) && session('_old_input.format') == 'html') { echo 'active'; } ?>">HTML
 {!! Form::radio('format', 'html', old('format', false), array('id'=>'html') ) !!}
-
-{!! Form::label('json', 'JSON') !!}
-{!! Form::radio('format', 'json', old('format', false), array('id'=>'json') ) !!}
+</label>
+<label class="btn btn-default <?php if( (null !== session('_old_input.format') ) && session('_old_input.format') == 'json') { echo 'active'; } ?>">JSON
+{!! Form::radio('format', 'json', old('format', true), array('id'=>'json') ) !!}
+</label>
+</div>
 </fieldset>
 
 <div class="btn-group" role="group">
