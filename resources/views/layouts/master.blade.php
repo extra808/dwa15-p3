@@ -66,7 +66,5 @@ ini_set('default_charset', 'UTF-8');
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script async src="javascripts/ie10-viewport-bug-workaround.js"></script>
 
-    <script async src="javascripts/select-all-on-click.js"></script>
-
   </body>
 </html>
