@@ -21,7 +21,7 @@ class FakeUsersController extends Controller
             , 'in' => array('some', 'yes', 'no') )
         , 'incSuffix' => array('default' => 'some'
             , 'in' => array('some', 'yes', 'no') )
-        , 'incOptions' => (array('address', 'phoneNumber', 'dob', 'email', 'userName', 'url', 'creditCard', 'uuid', 'bio') )
+        , 'incOptions' => (array('all', 'address', 'phoneNumber', 'dob', 'email', 'userName', 'url', 'creditCard', 'uuid', 'bio') )
         );
 
     /**
@@ -62,8 +62,7 @@ class FakeUsersController extends Controller
 
             array_push($fusers
             ,  $this->includeName($request->input('includeName'), $name)
-            ,  $this->includeOptions($faker, array('all') )
-//            ,  $this->includeOptions($faker, $this->fakeuser['incOptions'])
+            ,  $this->includeOptions($faker, $request->input('includeOptions'))
             );
         }
 
