@@ -40,7 +40,7 @@ class FakeUsersController extends Controller
 
         // delete input values if reset button clicked
         if($request->has('reset') ) {
-            $request->replace(array() );
+            $request->flush();
             return view('fakeusers')-> withTitle($this->title)-> withSitetitle($this->siteTitle);
         }
 
