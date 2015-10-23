@@ -76,7 +76,7 @@ class FakeUsersController extends Controller
                 break;
              case 'tab' :
                 foreach ($fusers as $fuser) {
-                    $content .= implode("\t", $fuser) ."\n";
+                    $content .= $this->userToTab($fuser, true);
                 }
                 break;
             case 'json' :
@@ -279,6 +279,36 @@ class FakeUsersController extends Controller
         }
         else {
             return '"'. implode('", "', $row) .'"' ."\n";
+        }
+    }
+
+
+    /**
+    * Convert a user array to tab-delimited string
+    *
+    * @param Array   $data
+    * @param Boolean $outermost
+    *
+    * @return String
+    */
+    private function userToTab($data, $outermost) {
+        $row = array();
+        foreach($data as $key => $value) {
+            if(is_array($value) ) {
+                // recursively call function
+                array_push($row, $this->userToTab($value, false) );
+            }
+            else {
+                // add string to array
+                array_push($row, $value);
+            }
+        }
+        // array inside array
+        if (!$outermost) {
+            return implode("\t", $row);
+        }
+        else {
+            return implode("\t", $row) ."\n";
         }
     }
 
