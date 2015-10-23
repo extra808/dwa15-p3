@@ -28,9 +28,7 @@ class FakeUsersController extends Controller
     * Responds to requests to GET /fakeusers
     */
     public function getFakeUsers() {
-        // store attributes in session
-        session()->put('fakeuser', $this->fakeuser);
-        return view('fakeusers')-> withTitle($this->title)-> withFusers(array() )-> withSitetitle($this->siteTitle);
+        return view('fakeusers')-> withTitle($this->title)-> withSitetitle($this->siteTitle);
     }
 
     /**
