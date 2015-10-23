@@ -209,7 +209,7 @@ class FakeUsersController extends Controller
                     $details['uuid'] = $faker->uuid;
                     break;
                 case 'bio' :
-                    $details['bio'] = $faker->realText('200');
+                    $details['bio'] = $faker->text('200');
                     break;
                 default :
             }
