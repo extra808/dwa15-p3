@@ -54,10 +54,12 @@
 </div>
 </fieldset>
 
+<fieldset>
 <div class="btn-group" role="group">
 {!! Form::submit('Submit', array('class'=>'btn btn-default')) !!}
 {!! Form::submit('Reset', array('name'=>'reset', 'class'=>'btn btn-default')) !!}
 </div>
+</fieldset>
 {!! Form::close() !!}
 
 <pre id="output" tabindex="0">
