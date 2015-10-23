@@ -102,6 +102,9 @@
 <label class="btn btn-default <?php if( (null !== session('_old_input.includeOptions') ) && in_array('email', session('_old_input.includeOptions') ) ) { echo 'active'; } ?>">Email
 {!! Form::checkbox('includeOptions[]', 'email', null, array('id'=>'incOptions_email') ) !!}
 </label>
+</div>
+<p>&nbsp;</p>
+<div class="btn-group" role="group" data-toggle="buttons">
 <label class="btn btn-default <?php if( (null !== session('_old_input.includeOptions') ) && in_array('userName', session('_old_input.includeOptions') ) ) { echo 'active'; } ?>">Username
 {!! Form::checkbox('includeOptions[]', 'userName', null, array('id'=>'incOptions_userName') ) !!}
 </label>
