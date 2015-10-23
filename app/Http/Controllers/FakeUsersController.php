@@ -59,10 +59,11 @@ class FakeUsersController extends Controller
             if ($incSuffix)
                 array_push($name, $incSuffix);
 
-            array_push($fusers
-            ,  $this->includeName($request->input('includeName'), $name)
-            ,  $this->includeOptions($faker, $request->input('includeOptions'))
-            );
+            $name = array('name' => $this->includeName($request->input('includeName'), $name) );
+            if ($request->has('includeOptions') ) {
+                $name = array_merge($name, $this->includeOptions($faker, $request->input('includeOptions') ) );
+            }
+            array_push($fusers, $name);
         }
 
         // output choice
@@ -70,7 +71,7 @@ class FakeUsersController extends Controller
             // comma separated values wrapped in parens ()
             case 'csv' :
                 foreach ($fusers as $fuser) {
-                    $content .= '"'. implode('", "', $fuser) .'"'."\n";
+                    $content .= $this->userToCSV($fuser, true);
                 }
                 break;
              case 'tab' :
@@ -249,6 +250,36 @@ class FakeUsersController extends Controller
         , 'includeSuffix' => 'required|in:'. implode(',', $this->fakeuser['incSuffix']['in'])
         , 'includeOptions' => 'array'
         ]);
+    }
+
+
+    /**
+    * Convert a user array to CSV formatted string
+    *
+    * @param Array   $data
+    * @param Boolean $outermost
+    *
+    * @return String
+    */
+    private function userToCSV($data, $outermost) {
+        $row = array();
+        foreach($data as $key => $value) {
+            if(is_array($value) ) {
+                // recursively call function
+                array_push($row, $this->userToCSV($value, false) );
+            }
+            else {
+                // add string to array
+                array_push($row, $value);
+            }
+        }
+        // array inside array
+        if (!$outermost) {
+            return implode('", "', $row);
+        }
+        else {
+            return '"'. implode('", "', $row) .'"' ."\n";
+        }
     }
 
 
