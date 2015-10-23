@@ -62,7 +62,7 @@
 </fieldset>
 {!! Form::close() !!}
 
-<pre id="output" tabindex="0">
+<pre id="output" class="row col-md-12" tabindex="0">
 {{ $content or '' }}
 </pre>
 @endsection

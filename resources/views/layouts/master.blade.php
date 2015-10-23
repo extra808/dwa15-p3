@@ -40,19 +40,10 @@ ini_set('default_charset', 'UTF-8');
         @endif
         <h1>{{ $title or $sitetitle }}</h1>
       </header>
-      <!-- Bootstrap two-columns, first column right -->
-      <div class="row">
-
-		<div class="content-prose-1col">
         @yield('content')
-		</div> <!-- /content-prose -->
+        </div> <!-- /row -->
 
-        <div class="text-center">
-
-        </div> <!-- /content-passphrase -->
-      </div> <!-- /row -->
-
-	<footer class="well well-sm text-right">&copy; Curtis Wilcox 2015
+	<footer class="text-right">&copy; Curtis Wilcox 2015
 	</footer>
     </div> <!-- /container -->
 
