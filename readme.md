@@ -7,6 +7,7 @@
 A site to generate paragraphs of random text and random user account details for use in application development. The user can choose different output formats such as JSON and CSV. Random text options include two different "lorem ipsum" generators and Elvish. Random users can have names formatted in different ways and accompanied by many other bits of data.
 
 ## Demo
+<https://youtu.be/F4zqdWSPGZ4>
 
 ## Details for teaching team
 * I couldn't get the Elvish package to work so I just copied its word array and made my own class that extends badcow/lorem-ipsum and overloads the $words variable. I put it in the Controllers directory and called it ElvishGenerator, I'm not sure that's the best practice.
