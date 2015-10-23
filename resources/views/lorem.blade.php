@@ -40,7 +40,7 @@
 <legend>Format</legend>
 <div class="btn-group" role="group" data-toggle="buttons">
 <label class="btn btn-default <?php if( (null !== session('_old_input.format') ) && session('_old_input.format') == 'plain') { echo 'active'; } ?>">Plain
-{!! Form::radio('format', 'plain', old('format', false), array('id'=>'plain') ) !!}
+{!! Form::radio('format', 'plain', old('format', true), array('id'=>'plain') ) !!}
 </label>
 <label class="btn btn-default <?php if( (null !== session('_old_input.format') ) && session('_old_input.format') == 'php') { echo 'active'; } ?>">PHP Array
 {!! Form::radio('format', 'php', old('format', false), array('id'=>'php') ) !!}
@@ -49,7 +49,7 @@
 {!! Form::radio('format', 'html', old('format', false), array('id'=>'html') ) !!}
 </label>
 <label class="btn btn-default <?php if( (null !== session('_old_input.format') ) && session('_old_input.format') == 'json') { echo 'active'; } ?>">JSON
-{!! Form::radio('format', 'json', old('format', true), array('id'=>'json') ) !!}
+{!! Form::radio('format', 'json', old('format', false), array('id'=>'json') ) !!}
 </label>
 </div>
 </fieldset>
