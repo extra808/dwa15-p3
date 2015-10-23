@@ -66,6 +66,31 @@
 {!! Form::radio('includeSuffix', 'no', old('includeSuffix', false), array('id'=>'incSuffix_no') ) !!}
 </fieldset>
 
+<fieldset>
+<legend>Additional options</legend>
+{!! Form::label('incOptions_all', 'ALL') !!}
+{!! Form::checkbox('includeOptions[]', 'all', null, array('id'=>'incOptions_all') ) !!}
+{!! Form::label('incOptions_address', 'Address') !!}
+{!! Form::checkbox('includeOptions[]', 'address', null, array('id'=>'incOptions_address') ) !!}
+{!! Form::label('incOptions_phoneNumber', 'Phone Number') !!}
+{!! Form::checkbox('includeOptions[]', 'phoneNumber', null, array('id'=>'incOptions_phoneNumber') ) !!}
+{!! Form::label('incOptions_dob', 'Date of Birth') !!}
+{!! Form::checkbox('includeOptions[]', 'dob', null, array('id'=>'incOptions_dob') ) !!}
+{!! Form::label('incOptions_email', 'Email') !!}
+{!! Form::checkbox('includeOptions[]', 'email', null, array('id'=>'incOptions_email') ) !!}
+{!! Form::label('incOptions_userName', 'Username') !!}
+{!! Form::checkbox('includeOptions[]', 'userName', null, array('id'=>'incOptions_userName') ) !!}
+{!! Form::label('incOptions_url', 'URL') !!}
+{!! Form::checkbox('includeOptions[]', 'url', null, array('id'=>'incOptions_url') ) !!}
+{!! Form::label('incOptions_creditCard', 'Credit Card') !!}
+{!! Form::checkbox('includeOptions[]', 'creditCard', null, array('id'=>'incOptions_creditCard') ) !!}
+{!! Form::label('incOptions_uuid', 'UUID') !!}
+{!! Form::checkbox('includeOptions[]', 'uuid', null, array('id'=>'incOptions_uuid') ) !!}
+{!! Form::label('incOptions_bio', 'Bio') !!}
+{!! Form::checkbox('includeOptions[]', 'bio', null, array('id'=>'incOptions_bio') ) !!}
+</fieldset>
+
+
 <div class="btn-group" role="group">
 {!! Form::submit('Submit', array('class'=>'btn btn-default')) !!}
 <a href="{!! Request::url() !!}" class="btn btn-default">Reset</a>
