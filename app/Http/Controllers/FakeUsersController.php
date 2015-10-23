@@ -21,7 +21,6 @@ class FakeUsersController extends Controller
             , 'in' => array('some', 'yes', 'no') )
         , 'incSuffix' => array('default' => 'some'
             , 'in' => array('some', 'yes', 'no') )
-        , 'incOptions' => (array('all', 'address', 'phoneNumber', 'dob', 'email', 'userName', 'url', 'creditCard', 'uuid', 'bio') )
         );
 
     /**
