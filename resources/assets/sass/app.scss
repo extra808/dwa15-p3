@@ -1,2 +1,27 @@
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+/* override Bootstrap */
+fieldset, pre {
+    margin-top: 20px;
+}
+
+legend {
+    margin-bottom: 5px;
+    border-bottom: none;
+}
+
+footer {
+    @extend .well;
+    @extend .well-sm;
+
+    clear: both;
+    }
+
+.page-header {
+    margin-top: 5px;
+    // make smaller
+    h1 {
+        font-size: $font-size-h3;
+    }
+}
+
