@@ -53,7 +53,7 @@
 </div>
 {!! Form::close() !!}
 
-<pre id="output" contenteditable="true" tabindex="0">
+<pre id="output" tabindex="0">
 {{ $content or '' }}
 </pre>
 @endsection
