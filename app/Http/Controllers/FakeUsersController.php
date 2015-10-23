@@ -21,6 +21,7 @@ class FakeUsersController extends Controller
             , 'in' => array('some', 'yes', 'no') )
         , 'incSuffix' => array('default' => 'some'
             , 'in' => array('some', 'yes', 'no') )
+        , 'incOptions' => array('all', 'address', 'phoneNumber', 'dob', 'email', 'userName', 'url', 'creditCard', 'uuid', 'bio')
         );
 
     /**
@@ -37,8 +38,6 @@ class FakeUsersController extends Controller
     */
     public function postFakeUsers(Request $request) {
         $this->validateFakeUsers($request);
-        // store input in session
-        $request->flash();
         $qty = $request->input('quantity');
         $fusers = array();
         $content = '';
@@ -87,6 +86,16 @@ class FakeUsersController extends Controller
                     $content .= implode(' ', $fuser) ."\n";
                 }
         }
+
+        // if ALL is checked, check all the other boxes
+        if(in_array('all', $request->input('includeOptions') ) ) {
+            $inputs = $request->all();
+            $inputs['includeOptions'] = $this->fakeuser['incOptions'];
+            $request->replace($inputs);
+        }
+
+        // store input in session
+        $request->flash();
 
         return view('fakeusers')-> withTitle($this->title)-> withContent($content)-> withSitetitle($this->siteTitle);
     }
