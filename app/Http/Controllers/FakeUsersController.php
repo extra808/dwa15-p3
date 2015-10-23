@@ -248,6 +248,7 @@ class FakeUsersController extends Controller
         , 'includeName'   => 'required|in:'. implode(',', $this->fakeuser['incName']['in'])
         , 'includeTitle'  => 'required|in:'. implode(',', $this->fakeuser['incTitle']['in'])
         , 'includeSuffix' => 'required|in:'. implode(',', $this->fakeuser['incSuffix']['in'])
+        , 'includeOptions' => 'array'
         ]);
     }
 
