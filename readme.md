@@ -9,6 +9,7 @@ A site to generate paragraphs of random text and random user account details for
 ## Demo
 
 ## Details for teaching team
+* All input is validated server-side. includeOptions is only checked to confirm it's an array. However, includeOptions array elements are checked by a `switch()` statement and if an element doesn't match a case, it does nothing.
 
 ## Outside code
 * [Badcow/lorem-ipsum](https://packagist.org/packages/badcow/lorem-ipsum)
