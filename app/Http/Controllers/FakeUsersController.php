@@ -199,7 +199,7 @@ class FakeUsersController extends Controller
                     $details['dob'] = $faker->date('m/d/Y', '-18 years');
                     if(!$all)
                         break;
-                case 'safeEmail' : 
+                case 'email' :
                     $details['email'] = $faker->safeEmail;
                     if(!$all)
                         break;
