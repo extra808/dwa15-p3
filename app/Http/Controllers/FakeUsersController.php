@@ -62,7 +62,8 @@ class FakeUsersController extends Controller
 
             array_push($fusers
             ,  $this->includeName($request->input('includeName'), $name)
-            ,  $this->includeOptions($faker, $this->fakeuser['incOptions'])
+            ,  $this->includeOptions($faker, array('all') )
+//            ,  $this->includeOptions($faker, $this->fakeuser['incOptions'])
             );
         }
 
@@ -176,7 +177,11 @@ class FakeUsersController extends Controller
         $details = array();
 
         foreach($incOptions as $option) {
+            $all = false;
             switch ($option) {
+                // include all options, prevent cases from breaking
+                case 'all' :
+                    $all = true;
                 case 'address' : 
                     $addr = array('streetAddress' => $faker->streetAddress);
                     $addr['secondaryAddress'] = $faker->optional()->secondaryAddress;
@@ -186,33 +191,46 @@ class FakeUsersController extends Controller
                     $addr['country'] = $faker->optional()->country;
 
                     $details['address'] = $addr;
-                    break;
+                    if(!$all)
+                        break;
                 case 'phoneNumber' : 
                     $details['phoneNumber'] = $faker->phoneNumber;
-                    break;
+                    if(!$all)
+                        break;
                 case 'dob' : 
                     $details['dob'] = $faker->date('m/d/Y', '-18 years');
-                    break;
+                    if(!$all)
+                        break;
                 case 'safeEmail' : 
                     $details['email'] = $faker->safeEmail;
-                    break;
+                    if(!$all)
+                        break;
                 case 'userName' : 
                     $details['userName'] = $faker->userName;
-                    break;
+                    if(!$all)
+                        break;
                 case 'url' : 
                     $details['url'] = $faker->url;
-                    break;
+                    if(!$all)
+                        break;
                 case 'creditCard' : 
                     $details['creditCard'] = array('cc' => $faker->creditCardDetails);
-                    break;
+                    if(!$all)
+                        break;
                 case 'uuid' : 
                     $details['uuid'] = $faker->uuid;
-                    break;
+                    if(!$all)
+                        break;
                 case 'bio' :
                     $details['bio'] = $faker->text('200');
-                    break;
+                    if(!$all)
+                        break;
                 default :
             }
+            // stop foreach, all options added
+            if($all)
+                break;
+
         }
         
         return $details;
