@@ -23,47 +23,65 @@
 
 <fieldset>
 <legend>Format</legend>
-{!! Form::label('json', 'JSON') !!}
+<div class="btn-group" role="group" data-toggle="buttons">
+<label class="btn btn-default <?php if( (null !== session('_old_input.format') ) && session('_old_input.format') == 'json') { echo 'active'; } ?>">JSON
 {!! Form::radio('format', 'json', old('format', true), array('id'=>'json') ) !!}
-
-{!! Form::label('csv', 'CSV') !!}
+</label>
+<label class="btn btn-default <?php if( (null !== session('_old_input.format') ) && session('_old_input.format') == 'csv') { echo 'active'; } ?>">CSV
 {!! Form::radio('format', 'csv', old('format', false), array('id'=>'csv') ) !!}
-
-{!! Form::label('tab', 'Tab-delimited') !!}
+</label>
+<label class="btn btn-default <?php if( (null !== session('_old_input.format') ) && session('_old_input.format') == 'tab') { echo 'active'; } ?>">Tab-delimited
 {!! Form::radio('format', 'tab', old('format', false), array('id'=>'tab') ) !!}
-
-{!! Form::label('plain', 'Plain') !!}
+</label>
+<label class="btn btn-default <?php if( (null !== session('_old_input.format') ) && session('_old_input.format') == 'plain') { echo 'active'; } ?>">Plain
 {!! Form::radio('format', 'plain', old('format', false), array('id'=>'plain') ) !!}
+</label>
+</div>
 </fieldset>
 
 <fieldset>
 <legend>Generate Names as</legend>
-{!! Form::label('incName_full', 'Full Name') !!}
+<div class="btn-group" role="group" data-toggle="buttons">
+<label class="btn btn-default <?php if( (null !== session('_old_input.includeName') ) && session('_old_input.includeName') == 'full') { echo 'active'; } ?>">Full name
 {!! Form::radio('includeName', 'full', old('includeName', true), array('id'=>'incName_full') ) !!}
-{!! Form::label('incName_component', 'Name in Components') !!}
+</label>
+<label class="btn btn-default <?php if( (null !== session('_old_input.includeName') ) && session('_old_input.includeName') == 'component') { echo 'active'; } ?>">Name in components
 {!! Form::radio('includeName', 'component', old('includeName', false), array('id'=>'incName_component') ) !!}
-{!! Form::label('incName_both', 'Both') !!}
+</label>
+<label class="btn btn-default <?php if( (null !== session('_old_input.includeName') ) && session('_old_input.includeName') == 'both') { echo 'active'; } ?>">Both
 {!! Form::radio('includeName', 'both', old('includeName', false), array('id'=>'incName_both') ) !!}
+</label>
+</div>
 </fieldset>
 
 <fieldset>
 <legend>Include Title (Dr., Ms., Mr.)</legend>
-{!! Form::label('incTitle_some', 'Sometimes') !!}
+<div class="btn-group" role="group" data-toggle="buttons">
+<label class="btn btn-default <?php if( (null !== session('_old_input.includeTitle') ) && session('_old_input.includeTitle') == 'some') { echo 'active'; } ?>">Sometimes
 {!! Form::radio('includeTitle', 'some', old('includeTitle', true), array('id'=>'incTitle_some') ) !!}
-{!! Form::label('incTitle_yes', 'Yes') !!}
+</label>
+<label class="btn btn-default <?php if( (null !== session('_old_input.includeTitle') ) && session('_old_input.includeTitle') == 'yes') { echo 'active'; } ?>">Yes
 {!! Form::radio('includeTitle', 'yes', old('includeTitle', false), array('id'=>'incTitle_yes') ) !!}
-{!! Form::label('incTitle_no', 'No') !!}
+</label>
+<label class="btn btn-default <?php if( (null !== session('_old_input.includeTitle') ) && session('_old_input.includeTitle') == 'no') { echo 'active'; } ?>">No
 {!! Form::radio('includeTitle', 'no', old('includeTitle', false), array('id'=>'incTitle_no') ) !!}
+</label>
+</div>
 </fieldset>
 
 <fieldset>
 <legend>Include Suffix (Jr., MD, III)</legend>
-{!! Form::label('incSuffix_some', 'Sometimes') !!}
+<div class="btn-group" role="group" data-toggle="buttons">
+<label class="btn btn-default <?php if( (null !== session('_old_input.includeSuffix') ) && session('_old_input.includeSuffix') == 'some') { echo 'active'; } ?>">Sometimes
 {!! Form::radio('includeSuffix', 'some', old('includeSuffix', true), array('id'=>'incSuffix_some') ) !!}
-{!! Form::label('incSuffix_yes', 'Yes') !!}
+</label>
+<label class="btn btn-default <?php if( (null !== session('_old_input.includeSuffix') ) && session('_old_input.includeSuffix') == 'yes') { echo 'active'; } ?>">Yes
 {!! Form::radio('includeSuffix', 'yes', old('includeSuffix', false), array('id'=>'incSuffix_yes') ) !!}
-{!! Form::label('incSuffix_no', 'No') !!}
+</label>
+<label class="btn btn-default <?php if( (null !== session('_old_input.includeSuffix') ) && session('_old_input.includeSuffix') == 'no') { echo 'active'; } ?>">No
 {!! Form::radio('includeSuffix', 'no', old('includeSuffix', false), array('id'=>'incSuffix_no') ) !!}
+</label>
+</div>
 </fieldset>
 
 <fieldset>
