@@ -16,9 +16,9 @@ Route::get('/', function () {
 });
 
 // only use Laravel Log Viewer in a local environment
-if (App::environment() == 'local') {
-    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-}
+// if (App::environment() == 'local') {
+//     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+// }
 
 Route::get('/lorem', 'LoremController@getLorem');
 

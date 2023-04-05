@@ -133,6 +133,8 @@
 {!! Form::close() !!}
 
 <pre id="output" class="row col-md-12" tabindex="0">
-{{ $content or '' }}
+    @if(isset($content) )
+    {{ $content }}
+    @endif
 </pre>
 @endsection

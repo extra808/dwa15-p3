@@ -37,8 +37,10 @@ ini_set('default_charset', 'UTF-8');
         <div class="row">
         <a href="/">{{$sitetitle }}</a>
         </div>
+        <h1>{{ $title }}</h1>
+        @else
+        <h1>{{ $sitetitle }}</h1>
         @endif
-        <h1>{{ $title or $sitetitle }}</h1>
       </header>
         @yield('content')
         </div> <!-- /row -->
